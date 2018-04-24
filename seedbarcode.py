@@ -13,9 +13,9 @@ import os
 def version():
     v0 = """
     ##########################################################################################
-    seedcode version 0.1
+    seedbarcode version beta-0.1
     Jinliang Yang
-    updated: 04-09-2018, generate barcoded Avery labels for seed planting and storage
+    updated: 04-24-2018, generate barcoded Avery labels for seed planting and storage
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

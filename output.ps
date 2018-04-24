@@ -1,0 +1,522 @@
+%!PS-Adobe-3.0
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use 'load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+
+      dup /UnderlinePosition known {
+        dup /UnderlinePosition get
+        0 exch FontMatrix transform exch pop
+        /UnderlinePosition exch def
+      } if
+
+      dup /UnderlineThickness known {
+        /UnderlineThickness get
+        0 exch FontMatrix transform exch pop
+        /UnderlineThickness exch def
+      } if
+
+    } if
+    currentdict
+  end
+} bind def
+
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon /less /equal /greater /question
+/at /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+/quoteleft /a /b /c /d /e /f /g
+/h /i /j /k /l /m /n /o
+/p /q /r /s /t /u /v /w
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis
+] def
+/ISOTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+/labelclip {
+	newpath
+	1.000000 1.000000 moveto
+	125.000000 1.000000 lineto
+	125.000000 35.000000 lineto
+	1.000000 35.000000 lineto
+	closepath
+	clip
+
+} def
+
+% end prologue
+
+% set font type and size
+ISOTimes-Roman 20 scalefont setfont
+%%Page: labels 1
+
+%%BeginPageSetup
+14.000000 17.000000 translate
+%%EndPageSetup
+
+gsave
+0 0
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(Barcode) show
+3.000000 22.800000 moveto
+(Genotype) show
+3.000000 16.800000 moveto
+(Pedigree) show
+3.000000 10.800000 moveto
+(Box) show
+stroke
+grestore
+
+gsave
+0 36
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B14A/C103 | Box373) show
+3.000000 22.800000 moveto
+(B14A/C103) show
+3.000000 16.800000 moveto
+(Box373) show
+3.000000 10.800000 moveto
+(373) show
+stroke
+grestore
+
+gsave
+0 72
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B14A/C103 | Box154) show
+3.000000 22.800000 moveto
+(B14A/C103) show
+3.000000 16.800000 moveto
+(Box154) show
+3.000000 10.800000 moveto
+(154) show
+stroke
+grestore
+
+gsave
+0 108
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B14A/MO17 | Box154) show
+3.000000 22.800000 moveto
+(B14A/MO17) show
+3.000000 16.800000 moveto
+(Box154) show
+3.000000 10.800000 moveto
+(154) show
+stroke
+grestore
+
+gsave
+0 144
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B14A/OH43 | Box154) show
+3.000000 22.800000 moveto
+(B14A/OH43) show
+3.000000 16.800000 moveto
+(Box154) show
+3.000000 10.800000 moveto
+(154) show
+stroke
+grestore
+
+gsave
+0 180
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B14A/OH43 | Box89) show
+3.000000 22.800000 moveto
+(B14A/OH43) show
+3.000000 16.800000 moveto
+(Box89) show
+3.000000 10.800000 moveto
+(89) show
+stroke
+grestore
+
+gsave
+0 216
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B37 | Box334) show
+3.000000 22.800000 moveto
+(B37) show
+3.000000 16.800000 moveto
+(Box334) show
+3.000000 10.800000 moveto
+(334) show
+stroke
+grestore
+
+gsave
+0 252
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B37/C103 | Box154) show
+3.000000 22.800000 moveto
+(B37/C103) show
+3.000000 16.800000 moveto
+(Box154) show
+3.000000 10.800000 moveto
+(154) show
+stroke
+grestore
+
+gsave
+0 288
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B37/Mo17 | Box271) show
+3.000000 22.800000 moveto
+(B37/Mo17) show
+3.000000 16.800000 moveto
+(Box271) show
+3.000000 10.800000 moveto
+(271) show
+stroke
+grestore
+
+gsave
+0 324
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B37/Mo17 | Box) show
+3.000000 22.800000 moveto
+(B37/Mo17) show
+3.000000 16.800000 moveto
+(Box) show
+3.000000 10.800000 moveto
+() show
+stroke
+grestore
+
+gsave
+0 360
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B37/OH43 | Box154) show
+3.000000 22.800000 moveto
+(B37/OH43) show
+3.000000 16.800000 moveto
+(Box154) show
+3.000000 10.800000 moveto
+(154) show
+stroke
+grestore
+
+gsave
+0 396
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73 | Box337) show
+3.000000 22.800000 moveto
+(B73) show
+3.000000 16.800000 moveto
+(Box337) show
+3.000000 10.800000 moveto
+(337) show
+stroke
+grestore
+
+gsave
+0 432
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73 | Box336) show
+3.000000 22.800000 moveto
+(B73) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+0 468
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73 | Box336) show
+3.000000 22.800000 moveto
+(B73) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+0 504
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73 | Box336) show
+3.000000 22.800000 moveto
+(B73) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+0 540
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73/Mo17 | Box1) show
+3.000000 22.800000 moveto
+(B73/Mo17) show
+3.000000 16.800000 moveto
+(Box1) show
+3.000000 10.800000 moveto
+(1) show
+stroke
+grestore
+
+gsave
+0 576
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73/Mo17 | Box374) show
+3.000000 22.800000 moveto
+(B73/Mo17) show
+3.000000 16.800000 moveto
+(Box374) show
+3.000000 10.800000 moveto
+(374) show
+stroke
+grestore
+
+gsave
+0 612
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73/Mo17 | Box269) show
+3.000000 22.800000 moveto
+(B73/Mo17) show
+3.000000 16.800000 moveto
+(Box269) show
+3.000000 10.800000 moveto
+(269) show
+stroke
+grestore
+
+gsave
+0 648
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73/Mo17 | Box107) show
+3.000000 22.800000 moveto
+(B73/Mo17) show
+3.000000 16.800000 moveto
+(Box107) show
+3.000000 10.800000 moveto
+(107) show
+stroke
+grestore
+
+gsave
+0 684
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(B73/Mo17 | Box374) show
+3.000000 22.800000 moveto
+(B73/Mo17) show
+3.000000 16.800000 moveto
+(Box374) show
+3.000000 10.800000 moveto
+(374) show
+stroke
+grestore
+
+gsave
+148 0
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(Mo17 | Box336) show
+3.000000 22.800000 moveto
+(Mo17) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+148 36
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(Mo17 | Box336) show
+3.000000 22.800000 moveto
+(Mo17) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+148 72
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(Mo17 | Box336) show
+3.000000 22.800000 moveto
+(Mo17) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+gsave
+148 108
+translate
+labelclip
+newpath
+ISOTimes-Roman 20 scalefont setfont
+3.000000 28.800000 moveto
+(Mo17 | Box336) show
+3.000000 22.800000 moveto
+(Mo17) show
+3.000000 16.800000 moveto
+(Box336) show
+3.000000 10.800000 moveto
+(336) show
+stroke
+grestore
+
+
+showpage

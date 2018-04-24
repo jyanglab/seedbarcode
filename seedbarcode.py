@@ -69,7 +69,7 @@ def avery5160(infile_name, outfile_name, fs):
 ### Planting Envelope:
 def avery5167(infile_name, outfile_name, fs):
     print("printed Avery 5167 planting labels")
-    os.system('labelnation -t avery-5167 -i ' + infile_name + ' --csv --font-size ' + fs + ' -o ' + outfile_name)
+    os.system('labelnation -t avery-5167 --bottom-margin 34 --left-margin 25 --leading-spaces 10 -i ' + infile_name + ' --csv --font-size ' + fs + ' -o ' + outfile_name)
 #os.system('ps2pdf fsbarcodes.ps final.pdf')    
 
 ##########################################################################################

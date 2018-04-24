@@ -8,6 +8,10 @@
 
 - Check out progress and things [to-do](TODO.md) and throw ideas via the wiki page.
 
+## Dependency
+
+- [postscriptbarcode](https://github.com/bwipp/postscriptbarcode)
+- [labelnation](https://www.red-bean.com/labelnation/)
 
 ## License
 This is an ongoing research project. It was intended for internal lab usage. It has not been extensively tested. Use at your own risk.
